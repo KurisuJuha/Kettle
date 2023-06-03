@@ -1,8 +1,10 @@
 name: Nuget Exporter
-on: 
+on:
   workflow_dispatch:
     inputs:
       tag:
+        description: "tag"
+        required: true
 jobs:
   nugetpush:
     runs-on: ubuntu-latest
