@@ -2,8 +2,8 @@ name: Nuget Exporter
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: "name"
+      tag:
+        description: "tag"
         required: true
 jobs:
   nugetpush:
