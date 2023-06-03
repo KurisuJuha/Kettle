@@ -1,5 +1,8 @@
 name: Nuget Exporter
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      tag:
 jobs:
   nugetpush:
     runs-on: ubuntu-latest
@@ -16,4 +19,4 @@ jobs:
       - name: build nuget
         run: dotnet pack -c Release
       - name: push nuget
-        run: dotnet nuget push ./Kettle/bin/Release/Kettle.1.0.0.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ./Kettle/bin/Release/Kettle.${{ github.event.inputs.tag }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
