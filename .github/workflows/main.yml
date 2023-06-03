@@ -2,8 +2,8 @@ name: Nuget Exporter
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: "tag"
+      name:
+        description: "name"
         required: true
 jobs:
   nugetpush:
@@ -21,4 +21,4 @@ jobs:
       - name: build nuget
         run: dotnet pack -c Release
       - name: push nuget
-        run: dotnet nuget push ./Kettle/bin/Release/Kettle.${{ github.event.inputs.tag }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ./Kettle/bin/Release/Kettle.${{ github.event.inputs.name }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
